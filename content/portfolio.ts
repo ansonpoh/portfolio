@@ -446,7 +446,7 @@ export const credentialGroups: CredentialGroup[] = [
     ],
   },
   {
-    title: "Collaboration Signal",
+    title: "Team Sync",
     items: [
       "Builds user-focused applications with scalable foundations",
       "Comfortable across frontend, backend, and product-level decision making",

@@ -90,7 +90,7 @@ export function HeroSection({ profile, projects }: HeroSectionProps) {
                 <div className="flex items-center justify-between gap-4">
                   <div>
                     <p className="font-mono text-xs uppercase tracking-[0.24em] text-[var(--color-secondary)]">
-                      Live Readout
+                      Live Broadcast
                     </p>
                     <h2 className="mt-3 font-display text-2xl uppercase tracking-[0.14em] text-white">
                       Engineering Overview
