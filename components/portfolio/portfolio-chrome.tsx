@@ -175,8 +175,8 @@ export function PortfolioChrome({
                 {name}
               </p>
               <p className="mt-2 max-w-xl text-sm leading-7 text-[var(--color-muted)]">
-                Full-stack portfolio interface with live project archive and direct
-                contact links.
+                Open to software engineering roles and collaborative full-stack
+                product work.
               </p>
             </div>
           </div>

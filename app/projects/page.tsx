@@ -11,20 +11,20 @@ import { absoluteUrl } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "A detailed archive of Anson Poh's software engineering projects, including stacks, highlights, and product context.",
+    "A recruiter-friendly archive of Anson Poh's featured software engineering projects, including problem statements, contributions, stacks, challenges, outcomes, and project evidence.",
   alternates: {
     canonical: "/projects",
   },
   openGraph: {
     title: "Projects | Anson Poh",
     description:
-      "A detailed archive of Anson Poh's software engineering projects, including stacks, highlights, and product context.",
+      "A recruiter-friendly archive of Anson Poh's featured software engineering projects, including problem statements, contributions, stacks, challenges, outcomes, and project evidence.",
     url: absoluteUrl("/projects"),
   },
   twitter: {
     title: "Projects | Anson Poh",
     description:
-      "A detailed archive of Anson Poh's software engineering projects, including stacks, highlights, and product context.",
+      "A recruiter-friendly archive of Anson Poh's featured software engineering projects, including problem statements, contributions, stacks, challenges, outcomes, and project evidence.",
   },
 };
 

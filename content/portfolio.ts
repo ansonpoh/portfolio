@@ -19,6 +19,19 @@ export type HeroReadout = {
   text: string;
 };
 
+export type ProjectLink = {
+  label: string;
+  href?: string;
+  status?: string;
+  external?: boolean;
+};
+
+export type ProjectPreview = {
+  eyebrow: string;
+  title: string;
+  description: string;
+};
+
 export type SiteProfile = {
   name: string;
   role: string;
@@ -27,9 +40,8 @@ export type SiteProfile = {
   intro: string;
   tagline: string;
   email: string;
+  resumeHref: string;
   socials: SocialLink[];
-  ctaPrimaryLabel: string;
-  ctaSecondaryLabel: string;
   heroFacts: ProjectMetric[];
   heroReadouts: HeroReadout[];
   signalTags: string[];
@@ -46,14 +58,16 @@ export type FeaturedProject = {
   id: string;
   title: string;
   tagline: string;
-  summary: string;
-  role: string;
   status: string;
+  summary: string;
+  problem: string;
+  role: string;
+  challenge: string;
+  outcome: string;
   stack: string[];
-  highlights: string[];
   metrics?: ProjectMetric[];
-  links?: SocialLink[];
-  visualKey: "signal" | "grid" | "trace";
+  links: ProjectLink[];
+  preview: ProjectPreview;
   visualTags: string[];
   accent: string;
 };
@@ -70,36 +84,40 @@ export type CredentialGroup = {
 
 export const siteProfile: SiteProfile = {
   name: "Anson Poh",
-  role: "Software Engineering Student and Full-Stack Web Developer",
+  role: "Software Engineering student building full-stack AI-enabled products.",
   location: "Singapore",
-  availability: "Open to software engineering internships and collaborative product builds.",
+  availability:
+    "Open to software engineering roles and collaborative full-stack product work.",
   intro:
-    "Year 3 Software Engineering student at Singapore Management University with hands-on experience building scalable, user-focused web applications.",
+    "Year 3 Software Engineering student at Singapore Management University, focused on Fullstack and AI Development.",
   tagline:
-    "I build practical full-stack products with modern frameworks, clear interfaces, and AI-assisted features that solve real user problems.",
+    "I build practical applications across public safety, volunteer matching, learning platforms, and computer-vision workflows.",
   email: "ansonpoh0909@gmail.com",
+  resumeHref: "/AnsonPoh_Resume.pdf",
   socials: [
     { label: "GitHub", href: "https://github.com/ansonpoh" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/anson-poh/" },
   ],
-  ctaPrimaryLabel: "Email Anson",
-  ctaSecondaryLabel: "View Projects",
   heroFacts: [
-    { label: "Featured Projects", value: "3 shipped concepts" },
+    { label: "Featured Projects", value: "5 featured projects" },
     { label: "Academic Standing", value: "GPA 3.6 / 4.0" },
     { label: "Graduation", value: "May 2028" },
   ],
   heroReadouts: [
     {
-      label: "Strength",
-      text: "Full-stack delivery across React, Next.js, Node.js, Express, Spring Boot, Supabase, and SQL-backed application flows.",
+      label: "Project Focused",
+      text: "Featured projects across AI and Fullstack Systems.",
     },
     {
-      label: "Edge",
-      text: "Projects pair product thinking with AI-powered workflows, interactive experiences, and clean implementation discipline.",
+      label: "Technical Adaptability",
+      text: "Comfortable moving between frontend delivery, backend systems, integrations, and product-facing execution in team projects.",
     },
   ],
-  signalTags: ["AI features", "Full-stack delivery", "Collaborative builds"],
+  signalTags: [
+    "React + Next.js",
+    "Node.js + Spring Boot",
+    "Supabase + SQL",
+  ],
 };
 
 export const portfolioNavItems: PortfolioNavItem[] = [
@@ -115,7 +133,7 @@ export const aboutCards: AboutCard[] = [
   {
     title: "Profile",
     body:
-      "Driven to solve complex problems through clean, efficient code and thoughtful collaboration. I focus on building products that stay useful under real user constraints.",
+      "I build recruiter-friendly software projects around clear user problems, practical delivery, and readable implementation. My focus is on shipping features that stay useful under real constraints.",
     accent: "secondary",
   },
   {
@@ -127,7 +145,7 @@ export const aboutCards: AboutCard[] = [
   {
     title: "Working Style",
     body:
-      "Analytical problem solving, fast iteration, and strong communication. I care about scalable architecture, readable code, and interfaces that stay intuitive as features grow.",
+      "I work best in fast-moving teams that value ownership, communication, and clean architecture. My strongest contributions are full-stack implementation, integration work, and turning rough ideas into usable product flows.",
     accent: "alert",
     span: "full",
   },
@@ -137,94 +155,243 @@ export const featuredProjects: FeaturedProject[] = [
   {
     id: "ai-safety-hivemind",
     title: "AI Safety Hivemind",
-    tagline: "AI-powered public safety platform for routing incident reports to the right agencies.",
+    tagline:
+      "AI-assisted public safety platform for routing reports and machine-detected risk signals.",
+    status: "AI safety platform",
     summary:
-      "Built an AI-driven public safety intelligence platform that combines human-reported incidents and machine-detected signals into a unified operational workflow. The system was developed with Next.js, Node.js/Express, Python microservices, Supabase, and PostgreSQL, integrating speech-to-text processing, OpenAI-powered report enrichment, and YOLO-based computer vision to analyze audio, image, and video inputs. It supports location-aware incident reporting, automated detection, intelligent triage, prioritization, and admin oversight to enable faster, more context-rich public safety decision-making.",
-    role: "Full-stack web development with Python, Next.js, and Supabase",
-    status: "Public safety platform",
-    stack: ["Python", "Next.js", "Supabase"],
-    highlights: [
-      "Built an incident reporting flow that collects structured public safety inputs from users.",
-      "Combined live submissions with risk signals to support smarter response decisions.",
-      "Focused the product around clear routing and usable information handoff.",
-    ],
+      "End-to-end public safety workflow that ingests text, audio, image, and video reports, enriches them with AI, and routes incidents to the right agencies faster.",
+    problem:
+      "Public safety teams lose time when citizen reports, media evidence, and environmental signals arrive in fragmented formats that are hard to triage quickly.",
+    role:
+      "Built full-stack reporting and triage workflows across Next.js, Express, Python services, and Supabase-backed data handling.",
+    challenge:
+      "Coordinating speech-to-text, AI enrichment, media analysis, and agency-aware routing across multiple services while keeping reports structured and actionable.",
+    outcome:
+      "Demonstrated an end-to-end incident workflow that turns text, audio, image, video, and Telegram inputs into dispatch-ready safety reports.",
+    stack: ["Next.js", "Node.js", "Express", "Python", "Supabase", "PostgreSQL"],
     metrics: [
-      { label: "Inputs", value: "Live reports" },
+      { label: "Inputs", value: "Text, audio, media" },
       { label: "Routing", value: "Agency-aware" },
-      { label: "Signal", value: "Risk-based" },
+      { label: "AI Flow", value: "Enriched triage" },
     ],
-    visualKey: "signal",
-    visualTags: ["INCIDENT ROUTING", "RISK SIGNALS", "PUBLIC SAFETY"],
+    links: [
+      {
+        label: "Live Demo",
+        status: "No verified public deployment linked yet.",
+      },
+      {
+        label: "GitHub Repo",
+        href: "https://github.com/ansonpoh/DLW_DNA",
+        external: true,
+      },
+      {
+        label: "Case Study",
+        href: "/projects#ai-safety-hivemind",
+      },
+    ],
+    preview: {
+      eyebrow: "Project Evidence",
+      title: "Report intake, AI enrichment, and operational routing.",
+      description:
+        "Use this area for future product screenshots or dashboard captures from the live reporting and admin workflow.",
+    },
+    visualTags: ["INCIDENT REPORTING", "AI ENRICHMENT", "AGENCY ROUTING"],
     accent: "#F5D300",
   },
   {
-    id: "volunteerconnect",
+    id: "volunteerconnect-app",
     title: "VolunteerConnect App",
-    tagline: "Volunteer matching platform with analytics, maps, and AI-assisted coordination.",
-    summary:
-      "Built VolunteerConnect, a full-stack volunteering platform that helps students and young adults discover suitable volunteer opportunities while enabling NGOs to manage events and sign-ups more efficiently. The system uses React, JavaScript, Node.js/Express, Supabase, and PostgreSQL, with features including secure authentication, AI-powered opportunity recommendations, an interactive Google Maps-based opportunity explorer, volunteer and organiser dashboards, community sharing, event registration tracking, and analytics visualisations for popular categories, regions, and volunteering trends.",
-    role: "Frontend and backend implementation with React, Supabase, and Express",
+    tagline:
+      "Volunteer matching platform with maps, analytics, and AI-assisted coordination features.",
     status: "Volunteer platform",
-    stack: ["React", "Supabase", "Express"],
-    highlights: [
-      "Built AI-driven recommendations for volunteer matching and organiser workflows.",
-      "Integrated analytics dashboards and interactive maps for stronger platform visibility.",
-      "Added a custom LLM assistant to improve user engagement and decision-making.",
-    ],
+    summary:
+      "Full-stack volunteer platform that helps users discover opportunities through AI-guided matching, map-based browsing, and organizer-facing analytics workflows.",
+    problem:
+      "Volunteer recruitment is often slow and fragmented, making it hard for people to find suitable opportunities and for NGOs to manage sign-ups efficiently.",
+    role:
+      "Contributed backend, database, authentication, and AI chat integration work while supporting the broader full-stack experience with Supabase and Express.",
+    challenge:
+      "Combining recommendation logic, dashboard analytics, mapping flows, and role-based platform workflows into one cohesive student-facing product.",
+    outcome:
+      "Delivered a full-stack volunteering platform that shows practical product thinking, collaboration, and integration of AI-assisted features into a real user workflow.",
+    stack: ["React", "Node.js", "Express", "Supabase", "PostgreSQL", "JavaScript"],
     metrics: [
-      { label: "Matching", value: "AI-driven" },
-      { label: "Maps", value: "Interactive" },
-      { label: "Assistant", value: "Custom LLM" },
+      { label: "Matching", value: "AI-guided" },
+      { label: "Discovery", value: "Maps + dashboards" },
+      { label: "Delivery", value: "Full-stack" },
     ],
-    visualKey: "grid",
-    visualTags: ["VOLUNTEER MATCHING", "ANALYTICS", "MAP WORKFLOWS"],
+    links: [
+      {
+        label: "Live Demo",
+        href: "https://is-216-project.vercel.app",
+        external: true,
+      },
+      {
+        label: "GitHub Repo",
+        href: "https://github.com/ansonpoh/IS216_Project",
+        external: true,
+      },
+      {
+        label: "Case Study",
+        href: "/projects#volunteerconnect-app",
+      },
+    ],
+    preview: {
+      eyebrow: "Preview Area",
+      title: "Opportunity discovery, dashboards, and NGO coordination.",
+      description:
+        "Recommended screenshot targets: volunteer listing, map explorer, dashboard analytics, and AI-assisted chat flow.",
+    },
+    visualTags: ["VOLUNTEER MATCHING", "INTERACTIVE MAPS", "ANALYTICS"],
     accent: "#00E5FF",
   },
   {
     id: "alpha-67",
     title: "Alpha 67",
-    tagline: "Game-based learning platform blending Gen Alpha culture with interactive progression.",
-    summary:
-      "Designed and built an interactive game-based learning platform that teaches Gen Alpha culture through map exploration, NPC interactions, quests, and combat-style quiz encounters. The platform combines a Phaser 3 and Vite frontend with Java 21 Spring Boot microservices, supporting learner progression, quizzes, achievements, leaderboards, chat, admin moderation, analytics, content publishing, and AI-assisted narration, moderation, question generation, reflection review, chatbot support, and contextual learning hints.",
-    role: "Game and platform development with Phaser 3, Spring Boot, Java 21, Vite, and Supabase",
+    tagline:
+      "Game-based learning platform blending Gen Alpha culture with exploration, quests, and progression.",
     status: "Learning platform",
-    stack: ["Phaser 3", "Vite", "Java 21", "Spring Boot", "Supabase"],
-    highlights: [
-      "Built interactive maps, NPC encounters, and quiz-based combat with progression systems.",
-      "Supported social platform features on top of a microservices backend architecture.",
-      "Applied AI for content generation, moderation, reflection review, chatbot support, and guided quiz hints.",
-    ],
+    summary:
+      "Interactive learning product combining Phaser gameplay and Spring Boot services to deliver quests, quiz combat, progression systems, and social features.",
+    problem:
+      "Traditional learning experiences struggle to keep younger audiences engaged, especially when content lacks interactivity, progression, and feedback loops.",
+    role:
+      "Built game and platform features across the frontend and backend, including interactive progression systems, service integration, and AI-assisted learning support.",
+    challenge:
+      "Connecting a Phaser-based gameplay layer with Spring Boot microservices, social features, analytics, and AI-assisted content flows without losing usability.",
+    outcome:
+      "Produced a strong full-stack academic build that demonstrates system integration, game-oriented UX thinking, and team-scale delivery across frontend and backend layers.",
+    stack: ["Phaser 3", "Vite", "Java 21", "Spring Boot", "Supabase", "Docker"],
     metrics: [
       { label: "Gameplay", value: "Quiz combat" },
-      { label: "World", value: "Interactive maps" },
       { label: "Backend", value: "Microservices" },
+      { label: "Deployment", value: "Vercel-linked" },
     ],
-    visualKey: "trace",
-    visualTags: ["NPC ENCOUNTERS", "QUIZ COMBAT", "AI MODERATION"],
+    links: [
+      {
+        label: "Live Demo",
+        href: "https://project-cicrt.vercel.app",
+        external: true,
+      },
+      {
+        label: "GitHub Repo",
+        href: "https://github.com/ansonpoh/CSD_Project",
+        external: true,
+      },
+      {
+        label: "Case Study",
+        href: "/projects#alpha-67",
+      },
+    ],
+    preview: {
+      eyebrow: "Preview Area",
+      title: "Maps, quests, and service-backed progression.",
+      description:
+        "Recommended screenshot targets: world map, NPC dialog, combat quiz flow, leaderboard, and admin content tools.",
+    },
+    visualTags: ["NPC QUESTS", "QUIZ COMBAT", "SERVICE INTEGRATION"],
     accent: "#FF4D6D",
   },
   {
-    id: "smart-attendance-management-system",
-    title: "Smart Attendance Management System",
+    id: "rag-service",
+    title: "RAG Service",
     tagline:
-      "JavaFX attendance platform that automates classroom tracking with OpenCV-based face recognition.",
+      "Production-style Retrieval-Augmented Generation backend with multi-tenant auth and streaming responses.",
+    status: "RAG backend service",
     summary:
-      "Built a smart attendance management system in JavaFX that automates classroom attendance through OpenCV-based face detection and recognition. The application supports student enrollment, class and session management, automatic and manual attendance marking, role-based access for admins, professors, and TAs, and exportable attendance reports using SQLite-backed data storage. Designed with modular OOP principles and a clean architecture, the system improves attendance tracking accuracy, reduces manual administrative work, and provides a more efficient workflow for managing class participation records.",
-    role: "Desktop application engineering with JavaFX, OpenCV, and SQLite-backed attendance workflows",
-    status: "Attendance platform",
-    stack: ["Java", "JavaFX", "OpenCV", "SQLite"],
-    highlights: [
-      "Built face detection and recognition flows to automate classroom attendance capture.",
-      "Supported student enrollment, class and session management, and both automatic and manual attendance marking.",
-      "Implemented role-based access control and exportable reporting to streamline administrative workflows.",
+      "Production-style FastAPI RAG backend with tenant-scoped JWT auth, async ingestion, hybrid retrieval, Postgres plus pgvector persistence, and SSE streaming chat.",
+    problem:
+      "LLM applications often fail in production when retrieval quality, tenant isolation, and response latency are not handled as first-class backend concerns.",
+    role:
+      "Designed and built a FastAPI-based RAG service with JWT tenant scoping, async ingestion pipelines, and retrieval/chat APIs backed by PostgreSQL + pgvector.",
+    challenge:
+      "Balancing hybrid retrieval relevance, secure multi-tenant data isolation, and real-time streaming UX while keeping ingestion, indexing, and observability production-ready.",
+    outcome:
+      "Delivered an end-to-end backend architecture with hybrid vector/keyword search, SSE chat streaming, metrics instrumentation, and a Next.js test client for validation.",
+    stack: [
+      "Python",
+      "FastAPI",
+      "OpenAI API",
+      "PostgreSQL",
+      "pgvector",
+      "Docker",
+      "Pytest",
+      "Next.js",
+      "TypeScript",
     ],
     metrics: [
-      { label: "Attendance", value: "Face-recognized" },
-      { label: "Access", value: "Role-based" },
-      { label: "Reports", value: "Exportable" },
+      { label: "Auth", value: "Multi-tenant JWT" },
+      { label: "Retrieval", value: "Hybrid search" },
+      { label: "Streaming", value: "SSE chat" },
     ],
-    visualKey: "signal",
-    visualTags: ["FACE RECOGNITION", "ROLE ACCESS", "ATTENDANCE REPORTS"],
+    links: [
+      {
+        label: "Live Demo",
+        status: "No verified public deployment linked yet.",
+      },
+      {
+        label: "GitHub Repo",
+        href: "https://github.com/ansonpoh/RAG",
+        external: true,
+      },
+      {
+        label: "Case Study",
+        href: "/projects#rag-service",
+      },
+    ],
+    preview: {
+      eyebrow: "Project Evidence",
+      title: "Ingestion, retrieval, and streamed tenant-safe generation.",
+      description:
+        "Recommended screenshot targets: ingestion queue, retrieval trace outputs, chat streaming interface, and tenant-scoped query or metrics dashboards.",
+    },
+    visualTags: ["MULTI-TENANT AUTH", "HYBRID RETRIEVAL", "SSE STREAMING"],
+    accent: "#FFC857",
+  },
+  {
+    id: "smart-attendance-system",
+    title: "Smart Attendance Management System",
+    tagline:
+      "JavaFX attendance platform with OpenCV-based face recognition and exportable reports.",
+    status: "Attendance system",
+    summary:
+      "Desktop attendance system that automates enrollment and session tracking with OpenCV-based recognition, role-based access control, and exportable reports.",
+    problem:
+      "Manual attendance tracking is slow, repetitive, and prone to errors, especially when classes need both administrative oversight and accurate records.",
+    role:
+      "Built a desktop attendance workflow in JavaFX with OpenCV-based recognition, session handling, and SQLite-backed reporting support.",
+    challenge:
+      "Combining face-recognition workflows, role-based permissions, and dependable attendance records inside a desktop application with clean modular structure.",
+    outcome:
+      "Demonstrated practical computer-vision integration in a usable classroom system that reduces manual work and improves attendance tracking accuracy.",
+    stack: ["Java", "JavaFX", "OpenCV", "SQLite"],
+    metrics: [
+      { label: "Recognition", value: "OpenCV-based" },
+      { label: "Roles", value: "Admin / Prof / TA" },
+      { label: "Reports", value: "CSV / PDF" },
+    ],
+    links: [
+      {
+        label: "Live Demo",
+        status: "No verified public deployment for this desktop application.",
+      },
+      {
+        label: "GitHub Repo",
+        href: "https://github.com/ansonpoh/smart-attendance-system-G2-group3",
+        external: true,
+      },
+      {
+        label: "Case Study",
+        href: "/projects#smart-attendance-system",
+      },
+    ],
+    preview: {
+      eyebrow: "Preview Area",
+      title: "Enrollment, recognition, and session tracking.",
+      description:
+        "Recommended screenshot targets: enrollment flow, attendance capture screen, session list, and export/report screens.",
+    },
+    visualTags: ["FACE RECOGNITION", "SESSION TRACKING", "EXPORT REPORTS"],
     accent: "#7CFF6B",
   },
 ];
@@ -247,7 +414,14 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     title: "Engineering Workflow",
-    items: ["Git", "Docker", "Kafka", "Analytical problem solving", "Collaboration", "Communication"],
+    items: [
+      "Git",
+      "Docker",
+      "Kafka",
+      "Analytical problem solving",
+      "Collaboration",
+      "Communication",
+    ],
   },
 ];
 

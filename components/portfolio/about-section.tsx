@@ -19,40 +19,42 @@ export function AboutSection({ profile, cards }: AboutSectionProps) {
       id="about"
       className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20"
     >
-      <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr]">
-        <SectionHeading
-          eyebrow="About"
-          title="Full-stack builder with a product mindset."
-          description={`${profile.intro} ${profile.tagline}`}
-        />
+      <div className="content-card p-6 sm:p-8 lg:p-10">
+        <div className="relative grid gap-8 lg:grid-cols-[0.92fr_1.08fr]">
+          <SectionHeading
+            eyebrow="About"
+            title="Full-stack builder with a product mindset."
+            description={`${profile.intro} ${profile.tagline}`}
+          />
 
-        <div className="grid gap-5 sm:grid-cols-2">
-          {cards.map((card) => (
-            <div
-              key={card.title}
-              style={accentStyles[card.accent]}
-              className={`cyber-panel cut-corner p-6 ${
-                card.span === "full" ? "sm:col-span-2" : ""
-              }`}
-            >
-              <div className="flex items-center justify-between gap-4">
-                <p
-                  className="font-mono text-xs uppercase tracking-[0.24em]"
-                  style={{ color: "var(--card-accent)" }}
-                >
-                  {card.title}
-                </p>
-                <span
-                  className="h-[3px] w-16"
-                  style={{
-                    backgroundColor: "var(--card-accent)",
-                    boxShadow: "0 0 18px var(--card-accent)",
-                  }}
-                />
+          <div className="grid gap-5 sm:grid-cols-2">
+            {cards.map((card) => (
+              <div
+                key={card.title}
+                style={accentStyles[card.accent]}
+                className={`cyber-panel cut-corner p-6 ${
+                  card.span === "full" ? "sm:col-span-2" : ""
+                }`}
+              >
+                <div className="flex items-center justify-between gap-4">
+                  <p
+                    className="font-mono text-xs uppercase tracking-[0.24em]"
+                    style={{ color: "var(--card-accent)" }}
+                  >
+                    {card.title}
+                  </p>
+                  <span
+                    className="h-[3px] w-16"
+                    style={{
+                      backgroundColor: "var(--card-accent)",
+                      boxShadow: "0 0 18px var(--card-accent)",
+                    }}
+                  />
+                </div>
+                <p className="mt-5 text-sm leading-7 text-[#d4dde8]">{card.body}</p>
               </div>
-              <p className="mt-5 text-sm leading-7 text-[#d4dde8]">{card.body}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

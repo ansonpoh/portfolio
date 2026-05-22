@@ -5,7 +5,7 @@ export const siteUrl =
 export const siteTitle = "Anson Poh | Software Engineering Portfolio";
 
 export const siteDescription =
-  "Portfolio of Anson Poh, a Singapore-based Software Engineering student building full-stack web applications with modern frameworks and AI-assisted features.";
+  "Portfolio of Anson Poh, a Singapore-based Software Engineering student building full-stack AI-enabled products across web applications, volunteer platforms, learning systems, and computer-vision workflows.";
 
 export function absoluteUrl(path = "/") {
   return new URL(path, siteUrl).toString();
