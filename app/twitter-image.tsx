@@ -17,7 +17,7 @@ export default function TwitterImage() {
       <PortfolioSocialImage
         eyebrow="Share Card"
         title={`${siteProfile.name} // Projects`}
-        subtitle="Full-stack portfolio featuring public safety, volunteer matching, and game-based learning projects."
+        subtitle="Full-stack portfolio featuring web applications, backend systems, AI-assisted workflows, and applied software tooling."
         accent="#00E5FF"
       />
     ),

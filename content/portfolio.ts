@@ -84,14 +84,14 @@ export type CredentialGroup = {
 
 export const siteProfile: SiteProfile = {
   name: "Anson Poh",
-  role: "Software Engineering student building full-stack AI-enabled products.",
+  role: "Software Engineering student building full-stack products across web, backend, and applied AI workflows.",
   location: "Singapore",
   availability:
     "Open to software engineering roles and collaborative full-stack product work.",
   intro:
-    "Year 3 Software Engineering student at Singapore Management University, focused on Fullstack and AI Development.",
+    "Year 3 Software Engineering student at Singapore Management University, focused on full-stack development with growing experience in AI-assisted and automation-oriented systems.",
   tagline:
-    "I build practical applications across public safety, volunteer matching, learning platforms, and computer-vision workflows.",
+    "I build practical applications across web platforms, backend services, AI-assisted workflows, and applied software systems that solve clear user problems.",
   email: "ansonpoh0909@gmail.com",
   resumeHref: "/AnsonPoh_Resume.pdf",
   socials: [
@@ -99,23 +99,23 @@ export const siteProfile: SiteProfile = {
     { label: "LinkedIn", href: "https://www.linkedin.com/in/anson-poh/" },
   ],
   heroFacts: [
-    { label: "Featured Projects", value: "5 featured projects" },
+    { label: "Featured Projects", value: "7 featured projects" },
     { label: "Academic Standing", value: "GPA 3.6 / 4.0" },
     { label: "Graduation", value: "May 2028" },
   ],
   heroReadouts: [
     {
       label: "Project Focused",
-      text: "Featured projects across AI and Fullstack Systems.",
+      text: "Featured work across product builds, backend systems, applied AI workflows, and user-facing software delivery.",
     },
     {
       label: "Technical Adaptability",
-      text: "Comfortable moving between frontend delivery, backend systems, integrations, and product-facing execution in team projects.",
+      text: "Comfortable moving between frontend delivery, backend systems, integrations, databases, and newer AI-assisted workflows in team projects.",
     },
   ],
   signalTags: [
     "React + Next.js",
-    "Node.js + Spring Boot",
+    "Node.js + FastAPI",
     "Supabase + SQL",
   ],
 };
@@ -133,7 +133,7 @@ export const aboutCards: AboutCard[] = [
   {
     title: "Profile",
     body:
-      "I build recruiter-friendly software projects around clear user problems, practical delivery, and readable implementation. My focus is on shipping features that stay useful under real constraints.",
+      "I build recruiter-friendly software projects around clear user problems, practical delivery, and readable implementation. My work spans frontend experiences, backend services, integrations, and newer AI-assisted workflows without losing focus on dependable fundamentals.",
     accent: "secondary",
   },
   {
@@ -145,7 +145,7 @@ export const aboutCards: AboutCard[] = [
   {
     title: "Working Style",
     body:
-      "I work best in fast-moving teams that value ownership, communication, and clean architecture. My strongest contributions are full-stack implementation, integration work, and turning rough ideas into usable product flows.",
+      "I work best in fast-moving teams that value ownership, communication, and clean architecture. My strongest contributions are full-stack implementation, integration work, and turning rough ideas into usable product flows, with AI and automation skills added where they meaningfully improve the result.",
     accent: "alert",
     span: "full",
   },
@@ -349,6 +349,117 @@ export const featuredProjects: FeaturedProject[] = [
     accent: "#FFC857",
   },
   {
+    id: "focus-tracker-agent",
+    title: "Focus Tracker Agent",
+    tagline:
+      "Local Windows productivity tracker with adaptive nudges, privacy-first monitoring, and scheduled reporting.",
+    status: "Productivity system",
+    summary:
+      "Local-first Windows tracking tool that samples active-window usage, classifies focus versus distraction, stores activity in SQLite, sends gentle nudges, and generates daily, weekly, and monthly reports.",
+    problem:
+      "People trying to improve focus often rely on manual reflection or invasive trackers, making it hard to understand work habits without sacrificing privacy or adding friction.",
+    role:
+      "Built the end-to-end desktop tracking workflow, including activity observation, classification logic, SQLite persistence, adaptive coaching behaviors, and scheduled report generation.",
+    challenge:
+      "Balancing useful productivity insights with privacy-first local storage, while combining heuristic rules, optional OpenAI-assisted classification, and notification-driven interventions in a dependable Windows workflow.",
+    outcome:
+      "Delivered a practical personal productivity system that keeps all tracking local by default, avoids keystroke or screenshot capture, and turns foreground-window activity into actionable focus reports.",
+    stack: [
+      "Python",
+      "SQLite",
+      "OpenAI API",
+      "Docker",
+      "Windows APIs",
+      "Desktop Notifications",
+    ],
+    metrics: [
+      { label: "Storage", value: "Local SQLite" },
+      { label: "Reports", value: "Daily to monthly" },
+      { label: "Privacy", value: "No screenshots" },
+    ],
+    links: [
+      {
+        label: "Live Demo",
+        status: "No verified public deployment for this local Windows application.",
+      },
+      {
+        label: "GitHub Repo",
+        href: "https://github.com/ansonpoh/Focus_Tracker_Agent",
+        external: true,
+      },
+      {
+        label: "Case Study",
+        href: "/projects#focus-tracker-agent",
+      },
+    ],
+    preview: {
+      eyebrow: "Project Evidence",
+      title: "Foreground tracking, adaptive nudges, and scheduled focus reporting.",
+      description:
+        "Recommended screenshot targets: report summaries, configuration rules, classification review workflow, and notification or coaching outputs.",
+    },
+    visualTags: ["LOCAL TRACKING", "ADAPTIVE NUDGES", "FOCUS REPORTS"],
+    accent: "#6BE6A8",
+  },
+  {
+    id: "gmail-agent-assistant",
+    title: "Gmail Agent Assistant",
+    tagline:
+      "Telegram-operated Gmail workflow assistant for triage, digests, follow-up tracking, and safe draft generation.",
+    status: "Workflow assistant",
+    summary:
+      "Backend-first Gmail assistant that runs through Telegram, syncs and analyzes emails, generates digests and draft replies, tracks follow-ups, and enforces a strict manual-send workflow.",
+    problem:
+      "Inbox management becomes slow and fragmented when important emails, follow-up tasks, and reply drafting all happen across separate tools without a structured review loop.",
+    role:
+      "Built the backend orchestration across FastAPI services, Gmail and Telegram integrations, background job processing, and AI-assisted analysis flows with explicit approval boundaries.",
+    challenge:
+      "Coordinating OAuth, Gmail read and draft workflows, async digest generation, follow-up tracking, and Telegram-based operations while maintaining clear safety constraints and no automatic email sending.",
+    outcome:
+      "Delivered a practical communication workflow assistant that improves inbox triage and reply preparation without removing the user from the final approval and send decision.",
+    stack: [
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "SQLAlchemy",
+      "Alembic",
+      "Redis",
+      "Celery",
+      "Telegram Bot API",
+      "Gmail API",
+      "OpenAI API",
+      "Docker",
+    ],
+    metrics: [
+      { label: "Interface", value: "Telegram-first" },
+      { label: "Email Access", value: "Read + draft only" },
+      { label: "Jobs", value: "Async processing" },
+    ],
+    links: [
+      {
+        label: "Live Demo",
+        status: "No verified public deployment linked yet.",
+      },
+      {
+        label: "GitHub Repo",
+        href: "https://github.com/ansonpoh/email_agent",
+        external: true,
+      },
+      {
+        label: "Case Study",
+        href: "/projects#gmail-agent-assistant",
+      },
+    ],
+    preview: {
+      eyebrow: "Project Evidence",
+      title: "Inbox triage, digest workflows, and manual-send draft support.",
+      description:
+        "Recommended screenshot targets: Telegram command flow, digest summaries, follow-up views, Gmail draft workflow, and backend architecture diagrams.",
+    },
+    visualTags: ["TELEGRAM OPS", "GMAIL DRAFTS", "FOLLOW-UP TRACKING"],
+    accent: "#7FB2FF",
+  },
+  {
     id: "smart-attendance-system",
     title: "Smart Attendance Management System",
     tagline:
@@ -410,6 +521,7 @@ export const skillGroups: SkillGroup[] = [
       "Node.js",
       "Express.js",
       "Spring Boot",
+      "FastAPI",
     ],
   },
   {
@@ -418,6 +530,9 @@ export const skillGroups: SkillGroup[] = [
       "Git",
       "Docker",
       "Kafka",
+      "SQLite",
+      "Redis / Celery",
+      "API integrations and workflow automation",
       "Analytical problem solving",
       "Collaboration",
       "Communication",

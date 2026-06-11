@@ -1,12 +1,11 @@
 import Link from "next/link";
-import type { FeaturedProject, SiteProfile } from "@/content/portfolio";
+import type { SiteProfile } from "@/content/portfolio";
 
 type HeroSectionProps = {
   profile: SiteProfile;
-  projects: FeaturedProject[];
 };
 
-export function HeroSection({ profile, projects }: HeroSectionProps) {
+export function HeroSection({ profile }: HeroSectionProps) {
   return (
     <section id="hero" className="relative overflow-hidden">
       <div className="mx-auto w-full max-w-7xl px-4 pb-20 pt-16 sm:px-6 lg:px-8 lg:pb-28 lg:pt-24">

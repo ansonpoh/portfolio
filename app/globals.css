@@ -606,6 +606,19 @@ body::after {
   background: linear-gradient(90deg, rgba(36, 229, 255, 0.4), rgba(245, 211, 0, 0.24));
 }
 
+.status-cell-placeholder {
+  min-height: 4.5rem;
+  border-color: rgba(255, 255, 255, 0.04);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(255, 255, 255, 0.005)),
+    rgba(8, 12, 18, 0.28);
+  opacity: 0.3;
+}
+
+.status-cell-placeholder::before {
+  background: linear-gradient(90deg, rgba(36, 229, 255, 0.12), rgba(245, 211, 0, 0.08));
+}
+
 .surface-grid {
   position: relative;
 }

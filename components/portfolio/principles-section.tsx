@@ -7,6 +7,7 @@ type PrinciplesSectionProps = {
 };
 
 export function CredentialsSection({ credentials }: PrinciplesSectionProps) {
+  const maxItems = Math.max(...credentials.map((group) => group.items.length));
   const accentPalette = [
     "var(--color-alert)",
     "var(--color-primary)",
@@ -30,33 +31,42 @@ export function CredentialsSection({ credentials }: PrinciplesSectionProps) {
             {credentials.map((group, index) => (
               <article
                 key={group.title}
-                className="cyber-panel cut-corner p-6"
+                className="cyber-panel cut-corner flex h-full flex-col p-6"
                 style={
                   { "--group-accent": accentPalette[index % accentPalette.length] } as CSSProperties
                 }
               >
-                <div className="flex items-center justify-between gap-4">
-                  <span className="section-kicker">File 0{index + 1}</span>
-                  <span
-                    className="h-3 w-3"
-                    style={{
-                      backgroundColor: "var(--group-accent)",
-                      boxShadow: "0 0 16px var(--group-accent)",
-                      clipPath: "polygon(0 0, 100% 0, 100% 55%, 55% 100%, 0 100%)",
-                    }}
-                  />
+                <div className="min-h-[7.5rem]">
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="section-kicker">File 0{index + 1}</span>
+                    <span
+                      className="h-3 w-3"
+                      style={{
+                        backgroundColor: "var(--group-accent)",
+                        boxShadow: "0 0 16px var(--group-accent)",
+                        clipPath: "polygon(0 0, 100% 0, 100% 55%, 55% 100%, 0 100%)",
+                      }}
+                    />
+                  </div>
+                  <h3
+                    data-text={group.title}
+                    className="glitch-hover mt-5 font-display text-2xl uppercase tracking-[0.14em] text-white"
+                  >
+                    {group.title}
+                  </h3>
                 </div>
-                <h3
-                  data-text={group.title}
-                  className="glitch-hover mt-5 font-display text-2xl uppercase tracking-[0.14em] text-white"
-                >
-                  {group.title}
-                </h3>
-                <div className="mt-4 space-y-3">
+                <div className="mt-4 grid flex-1 content-start gap-3">
                   {group.items.map((item) => (
                     <div key={item} className="status-cell text-sm leading-7 text-[#d4dde8]">
                       {item}
                     </div>
+                  ))}
+                  {Array.from({ length: maxItems - group.items.length }, (_, placeholderIndex) => (
+                    <div
+                      key={`${group.title}-placeholder-${placeholderIndex}`}
+                      aria-hidden="true"
+                      className="status-cell status-cell-placeholder"
+                    />
                   ))}
                 </div>
               </article>

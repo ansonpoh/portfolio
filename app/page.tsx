@@ -1,7 +1,6 @@
 import {
   aboutCards,
   credentialGroups,
-  featuredProjects,
   portfolioNavItems,
   siteProfile,
   skillGroups,
@@ -19,7 +18,7 @@ export default function Home() {
       name={siteProfile.name}
       navItems={portfolioNavItems}
     >
-      <HeroSection profile={siteProfile} projects={featuredProjects} />
+      <HeroSection profile={siteProfile} />
       <AboutSection profile={siteProfile} cards={aboutCards} />
       <CapabilitiesSection skillGroups={skillGroups} />
       <CredentialsSection credentials={credentialGroups} />
