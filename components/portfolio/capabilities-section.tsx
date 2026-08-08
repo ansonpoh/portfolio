@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react";
 import type { SkillGroup } from "@/content/portfolio";
 import { SectionHeading } from "@/components/portfolio/section-heading";
 
@@ -9,72 +8,36 @@ type CapabilitiesSectionProps = {
 export function CapabilitiesSection({
   skillGroups,
 }: CapabilitiesSectionProps) {
-  const maxItems = Math.max(...skillGroups.map((group) => group.items.length));
-  const accentPalette = [
-    "var(--color-primary)",
-    "var(--color-secondary)",
-    "var(--color-magenta)",
-  ];
-
   return (
-    <section
-      id="capabilities"
-      className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20"
-    >
-      <div className="content-card p-6 sm:p-8 lg:p-10">
-        <div className="relative">
-          <SectionHeading
-            eyebrow="Skills"
-            title="Languages, frameworks, and team-ready workflow."
-            description="The stack spans frontend, backend, and delivery tooling, supported by problem solving, communication, and collaborative development habits."
-          />
+    <section id="capabilities" className="border-b border-[var(--border)]">
+      <div className="mx-auto w-full max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
+        <SectionHeading
+          eyebrow="Skills"
+          title="Tools I use to ship complete products."
+          description="A practical toolkit spanning application development, backend services, data, AI-assisted workflows, and team delivery."
+        />
 
-          <div className="mt-10 grid gap-6 md:grid-cols-3 lg:mt-12">
-            {skillGroups.map((group, index) => (
-              <article
-                key={group.title}
-                className="cyber-panel cut-corner flex h-full flex-col p-6"
-                style={
-                  { "--group-accent": accentPalette[index % accentPalette.length] } as CSSProperties
-                }
-              >
-                <div className="min-h-[7.5rem]">
-                  <div className="flex items-center justify-between gap-4">
-                    <p className="font-mono text-xs uppercase tracking-[0.24em] text-[var(--group-accent)]">
-                      Node 0{index + 1}
-                    </p>
-                    <span
-                      className="h-[3px] w-16"
-                      style={{
-                        backgroundColor: "var(--group-accent)",
-                        boxShadow: "0 0 18px var(--group-accent)",
-                      }}
-                    />
-                  </div>
-                  <h3
-                    data-text={group.title}
-                    className="glitch-hover mt-5 font-display text-2xl uppercase tracking-[0.14em] text-white"
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
+          {skillGroups.map((group) => (
+            <article
+              key={group.title}
+              className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6 sm:p-7"
+            >
+              <h3 className="text-base font-semibold text-[var(--text)]">
+                {group.title}
+              </h3>
+              <ul className="mt-5 flex flex-wrap gap-2">
+                {group.items.map((item) => (
+                  <li
+                    key={item}
+                    className="rounded-md border border-[var(--border)] bg-[var(--surface-raised)] px-3 py-2 text-sm leading-5 text-[#c7cdd5]"
                   >
-                    {group.title}
-                  </h3>
-                </div>
-                <div className="mt-5 grid flex-1 content-start gap-3">
-                  {group.items.map((item) => (
-                    <div key={item} className="status-cell text-sm leading-7 text-[#d4dde8]">
-                      {item}
-                    </div>
-                  ))}
-                  {Array.from({ length: maxItems - group.items.length }, (_, placeholderIndex) => (
-                    <div
-                      key={`${group.title}-placeholder-${placeholderIndex}`}
-                      aria-hidden="true"
-                      className="status-cell status-cell-placeholder"
-                    />
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
         </div>
       </div>
     </section>

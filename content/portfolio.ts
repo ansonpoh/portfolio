@@ -14,22 +14,11 @@ export type ProjectMetric = {
   value: string;
 };
 
-export type HeroReadout = {
-  label: string;
-  text: string;
-};
-
 export type ProjectLink = {
   label: string;
   href?: string;
   status?: string;
   external?: boolean;
-};
-
-export type ProjectPreview = {
-  eyebrow: string;
-  title: string;
-  description: string;
 };
 
 export type SiteProfile = {
@@ -43,14 +32,11 @@ export type SiteProfile = {
   resumeHref: string;
   socials: SocialLink[];
   heroFacts: ProjectMetric[];
-  heroReadouts: HeroReadout[];
-  signalTags: string[];
 };
 
 export type AboutCard = {
   title: string;
   body: string;
-  accent: "primary" | "secondary" | "alert";
   span?: "normal" | "full";
 };
 
@@ -67,9 +53,6 @@ export type FeaturedProject = {
   stack: string[];
   metrics?: ProjectMetric[];
   links: ProjectLink[];
-  preview: ProjectPreview;
-  visualTags: string[];
-  accent: string;
 };
 
 export type SkillGroup = {
@@ -84,14 +67,14 @@ export type CredentialGroup = {
 
 export const siteProfile: SiteProfile = {
   name: "Anson Poh",
-  role: "Software Engineering student building full-stack products across web, backend, and applied AI workflows.",
+  role: "Software Engineering student building full-stack products across web, backend, and applied AI.",
   location: "Singapore",
   availability:
     "Open to software engineering roles and collaborative full-stack product work.",
   intro:
-    "Year 3 Software Engineering student at Singapore Management University, focused on full-stack development with growing experience in AI-assisted and automation-oriented systems.",
+    "Year 3 Software Engineering student at Singapore Management University, focused on full-stack development, AI-assisted systems, and automation.",
   tagline:
-    "I build practical applications across web platforms, backend services, AI-assisted workflows, and applied software systems that solve clear user problems.",
+    "I turn clear user problems into practical web platforms, backend services, and AI-assisted workflows.",
   email: "ansonpoh0909@gmail.com",
   resumeHref: "/AnsonPoh_Resume.pdf",
   socials: [
@@ -100,53 +83,31 @@ export const siteProfile: SiteProfile = {
   ],
   heroFacts: [
     { label: "Featured Projects", value: "7 featured projects" },
-    { label: "Academic Standing", value: "GPA 3.6 / 4.0" },
+    { label: "Academic Standing", value: "GPA 3.62 / 4.0" },
     { label: "Graduation", value: "May 2028" },
-  ],
-  heroReadouts: [
-    {
-      label: "Project Focused",
-      text: "Featured work across product builds, backend systems, applied AI workflows, and user-facing software delivery.",
-    },
-    {
-      label: "Technical Adaptability",
-      text: "Comfortable moving between frontend delivery, backend systems, integrations, databases, and newer AI-assisted workflows in team projects.",
-    },
-  ],
-  signalTags: [
-    "React + Next.js",
-    "Node.js + FastAPI",
-    "Supabase + SQL",
   ],
 };
 
 export const portfolioNavItems: PortfolioNavItem[] = [
-  { href: "/#hero", sectionId: "hero", label: "Hero" },
-  { href: "/#about", sectionId: "about", label: "About" },
+  { href: "/#hero", sectionId: "hero", label: "Home" },
   { href: "/projects", label: "Projects" },
-  { href: "/#capabilities", sectionId: "capabilities", label: "Skills" },
-  { href: "/#credentials", sectionId: "credentials", label: "Credentials" },
-  { href: "/#contact", sectionId: "contact", label: "Contact" },
 ];
 
 export const aboutCards: AboutCard[] = [
   {
     title: "Profile",
     body:
-      "I build recruiter-friendly software projects around clear user problems, practical delivery, and readable implementation. My work spans frontend experiences, backend services, integrations, and newer AI-assisted workflows without losing focus on dependable fundamentals.",
-    accent: "secondary",
+      "I build software around clear user problems, readable implementation, and dependable delivery. My work spans frontend experiences, backend services, integrations, and AI-assisted workflows.",
   },
   {
     title: "Education Snapshot",
     body:
-      "Singapore Management University, Bachelor of Science in Software Engineering. Current GPA: 3.6 / 4.0. Expected graduation: May 2028.",
-    accent: "primary",
+      "Singapore Management University, Bachelor of Science in Software Engineering. Current GPA: 3.62 / 4.0. Expected graduation: May 2028.",
   },
   {
     title: "Working Style",
     body:
-      "I work best in fast-moving teams that value ownership, communication, and clean architecture. My strongest contributions are full-stack implementation, integration work, and turning rough ideas into usable product flows, with AI and automation skills added where they meaningfully improve the result.",
-    accent: "alert",
+      "I work best in teams that value ownership, communication, and clean architecture. I contribute most through full-stack implementation, integrations, and turning rough ideas into usable product flows.",
     span: "full",
   },
 ];
@@ -184,19 +145,7 @@ export const featuredProjects: FeaturedProject[] = [
         href: "https://github.com/ansonpoh/DLW_DNA",
         external: true,
       },
-      {
-        label: "Case Study",
-        href: "/projects#ai-safety-hivemind",
-      },
     ],
-    preview: {
-      eyebrow: "Project Evidence",
-      title: "Report intake, AI enrichment, and operational routing.",
-      description:
-        "Use this area for future product screenshots or dashboard captures from the live reporting and admin workflow.",
-    },
-    visualTags: ["INCIDENT REPORTING", "AI ENRICHMENT", "AGENCY ROUTING"],
-    accent: "#F5D300",
   },
   {
     id: "volunteerconnect-app",
@@ -231,19 +180,7 @@ export const featuredProjects: FeaturedProject[] = [
         href: "https://github.com/ansonpoh/IS216_Project",
         external: true,
       },
-      {
-        label: "Case Study",
-        href: "/projects#volunteerconnect-app",
-      },
     ],
-    preview: {
-      eyebrow: "Preview Area",
-      title: "Opportunity discovery, dashboards, and NGO coordination.",
-      description:
-        "Recommended screenshot targets: volunteer listing, map explorer, dashboard analytics, and AI-assisted chat flow.",
-    },
-    visualTags: ["VOLUNTEER MATCHING", "INTERACTIVE MAPS", "ANALYTICS"],
-    accent: "#00E5FF",
   },
   {
     id: "alpha-67",
@@ -278,19 +215,7 @@ export const featuredProjects: FeaturedProject[] = [
         href: "https://github.com/ansonpoh/CSD_Project",
         external: true,
       },
-      {
-        label: "Case Study",
-        href: "/projects#alpha-67",
-      },
     ],
-    preview: {
-      eyebrow: "Preview Area",
-      title: "Maps, quests, and service-backed progression.",
-      description:
-        "Recommended screenshot targets: world map, NPC dialog, combat quiz flow, leaderboard, and admin content tools.",
-    },
-    visualTags: ["NPC QUESTS", "QUIZ COMBAT", "SERVICE INTEGRATION"],
-    accent: "#FF4D6D",
   },
   {
     id: "rag-service",
@@ -334,19 +259,7 @@ export const featuredProjects: FeaturedProject[] = [
         href: "https://github.com/ansonpoh/RAG",
         external: true,
       },
-      {
-        label: "Case Study",
-        href: "/projects#rag-service",
-      },
     ],
-    preview: {
-      eyebrow: "Project Evidence",
-      title: "Ingestion, retrieval, and streamed tenant-safe generation.",
-      description:
-        "Recommended screenshot targets: ingestion queue, retrieval trace outputs, chat streaming interface, and tenant-scoped query or metrics dashboards.",
-    },
-    visualTags: ["MULTI-TENANT AUTH", "HYBRID RETRIEVAL", "SSE STREAMING"],
-    accent: "#FFC857",
   },
   {
     id: "focus-tracker-agent",
@@ -387,19 +300,7 @@ export const featuredProjects: FeaturedProject[] = [
         href: "https://github.com/ansonpoh/Focus_Tracker_Agent",
         external: true,
       },
-      {
-        label: "Case Study",
-        href: "/projects#focus-tracker-agent",
-      },
     ],
-    preview: {
-      eyebrow: "Project Evidence",
-      title: "Foreground tracking, adaptive nudges, and scheduled focus reporting.",
-      description:
-        "Recommended screenshot targets: report summaries, configuration rules, classification review workflow, and notification or coaching outputs.",
-    },
-    visualTags: ["LOCAL TRACKING", "ADAPTIVE NUDGES", "FOCUS REPORTS"],
-    accent: "#6BE6A8",
   },
   {
     id: "gmail-agent-assistant",
@@ -445,19 +346,7 @@ export const featuredProjects: FeaturedProject[] = [
         href: "https://github.com/ansonpoh/email_agent",
         external: true,
       },
-      {
-        label: "Case Study",
-        href: "/projects#gmail-agent-assistant",
-      },
     ],
-    preview: {
-      eyebrow: "Project Evidence",
-      title: "Inbox triage, digest workflows, and manual-send draft support.",
-      description:
-        "Recommended screenshot targets: Telegram command flow, digest summaries, follow-up views, Gmail draft workflow, and backend architecture diagrams.",
-    },
-    visualTags: ["TELEGRAM OPS", "GMAIL DRAFTS", "FOLLOW-UP TRACKING"],
-    accent: "#7FB2FF",
   },
   {
     id: "smart-attendance-system",
@@ -491,19 +380,7 @@ export const featuredProjects: FeaturedProject[] = [
         href: "https://github.com/ansonpoh/smart-attendance-system-G2-group3",
         external: true,
       },
-      {
-        label: "Case Study",
-        href: "/projects#smart-attendance-system",
-      },
     ],
-    preview: {
-      eyebrow: "Preview Area",
-      title: "Enrollment, recognition, and session tracking.",
-      description:
-        "Recommended screenshot targets: enrollment flow, attendance capture screen, session list, and export/report screens.",
-    },
-    visualTags: ["FACE RECOGNITION", "SESSION TRACKING", "EXPORT REPORTS"],
-    accent: "#7CFF6B",
   },
 ];
 
@@ -530,9 +407,8 @@ export const skillGroups: SkillGroup[] = [
       "Git",
       "Docker",
       "Kafka",
-      "SQLite",
-      "Redis / Celery",
-      "API integrations and workflow automation",
+      "AWS",
+      "Redis",
       "Analytical problem solving",
       "Collaboration",
       "Communication",
@@ -545,7 +421,7 @@ export const credentialGroups: CredentialGroup[] = [
     title: "Education and Achievements",
     items: [
       "Singapore Management University, Bachelor of Science in Software Engineering",
-      "Current GPA: 3.6 / 4.0",
+      "Current GPA: 3.62 / 4.0",
       "Expected graduation: May 2028",
       "Participant, SMU .HACKathon",
       "Participant, NTU Deep Learning Week",
@@ -554,6 +430,7 @@ export const credentialGroups: CredentialGroup[] = [
   {
     title: "Certifications",
     items: [
+      "AWS Certified Solutions Architect – Associate",
       "Google Cybersecurity",
       "Google IT Automation with Python",
       "IBM DevOps and Software Engineering",
@@ -561,7 +438,7 @@ export const credentialGroups: CredentialGroup[] = [
     ],
   },
   {
-    title: "Team Sync",
+    title: "Engineering Approach",
     items: [
       "Builds user-focused applications with scalable foundations",
       "Comfortable across frontend, backend, and product-level decision making",

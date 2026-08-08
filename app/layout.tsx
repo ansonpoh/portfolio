@@ -1,23 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, IBM_Plex_Mono, Oxanium } from "next/font/google";
+import { Geist } from "next/font/google";
 import "./globals.css";
 import { absoluteUrl, siteDescription, siteTitle, siteUrl } from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-});
-
-const plexMono = IBM_Plex_Mono({
-  variable: "--font-plex-mono",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-});
-
-const oxanium = Oxanium({
-  variable: "--font-oxanium",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -59,7 +47,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   colorScheme: "dark",
-  themeColor: "#07090D",
+  themeColor: "#0b0d10",
 };
 
 export default function RootLayout({
@@ -70,8 +58,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${plexMono.variable} ${oxanium.variable} h-full antialiased`}
-      data-scroll-behavior="smooth"
+      className={`${geistSans.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col overflow-x-hidden">{children}</body>
     </html>

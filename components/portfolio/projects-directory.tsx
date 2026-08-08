@@ -1,7 +1,3 @@
-"use client";
-
-import type { CSSProperties } from "react";
-import { useEffect } from "react";
 import type { FeaturedProject } from "@/content/portfolio";
 import { SectionHeading } from "@/components/portfolio/section-heading";
 
@@ -10,216 +6,119 @@ type ProjectsDirectoryProps = {
 };
 
 export function ProjectsDirectory({ projects }: ProjectsDirectoryProps) {
-  useEffect(() => {
-    const syncOpenProjectWithHash = () => {
-      const hash = window.location.hash.replace("#", "");
-
-      if (!hash) {
-        return;
-      }
-
-      const allProjects = document.querySelectorAll<HTMLDetailsElement>(
-        "[data-project-entry]",
-      );
-
-      allProjects.forEach((entry) => {
-        entry.open = entry.id === hash;
-      });
-
-      const target = document.getElementById(hash);
-      target?.scrollIntoView({ block: "start", behavior: "smooth" });
-    };
-
-    syncOpenProjectWithHash();
-    window.addEventListener("hashchange", syncOpenProjectWithHash);
-
-    return () => {
-      window.removeEventListener("hashchange", syncOpenProjectWithHash);
-    };
-  }, []);
-
   return (
-    <section
-      id="projects-directory"
-      className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 py-14 sm:px-6 lg:px-8 lg:py-20"
-    >
-      <div className="content-card p-6 sm:p-8 lg:p-10">
-        <div className="relative">
-          <SectionHeading
-            eyebrow="Project Archive"
-            title="Detailed project breakdowns, one build at a time."
-            description="Each entry keeps the focus on the problem, my role, the stack, the core challenge, the outcome, and a short preview summary."
-          />
+    <section className="mx-auto w-full max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
+      <SectionHeading
+        eyebrow="Projects"
+        title="Selected work, from problem to delivery."
+        description="Seven projects across full-stack products, backend systems, applied AI, automation, and user-facing software."
+      />
 
-          <div className="mt-10 grid gap-5">
-            {projects.map((project, index) => {
-              const repositoryLinks = project.links.filter(
-                (link) => link.label === "GitHub Repo" && link.href,
-              );
+      <div className="mt-12 space-y-6">
+        {projects.map((project, index) => {
+          const visibleLinks = project.links.filter(
+            (link) => link.label !== "Case Study",
+          );
 
-              return (
-                <details
-                  key={project.id}
-                  id={project.id}
-                  data-project-entry
-                  className="project-disclosure cyber-panel cut-corner surface-grid overflow-hidden"
-                  style={{ "--project-accent": project.accent } as CSSProperties}
-                  open={index === 0}
-                >
-                  <summary className="project-disclosure-summary list-none p-6 lg:p-8">
-                    <div className="flex flex-wrap items-center gap-3">
-                      <span
-                        className="chip"
-                        style={{ borderColor: project.accent, color: project.accent }}
-                      >
-                        0{index + 1}
-                      </span>
-                      <span className="chip">{project.status}</span>
-                      <span className="project-disclosure-hint">
-                        Click to expand project details
-                      </span>
-                    </div>
-
-                    <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(18rem,0.8fr)] lg:items-start">
-                      <div className="space-y-4">
-                        <p
-                          className="font-mono text-xs uppercase tracking-[0.24em]"
-                          style={{ color: project.accent }}
-                        >
-                          {project.tagline}
-                        </p>
-                        <h2
-                          data-text={project.title}
-                          className="glitch-hover font-display text-3xl uppercase tracking-[0.14em] text-white sm:text-4xl"
-                        >
-                          {project.title}
-                        </h2>
-                        <p className="max-w-3xl text-sm leading-7 text-[#dbe4ee] sm:text-base">
-                          {project.summary}
-                        </p>
-                      </div>
-
-                      <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-                        {project.metrics?.map((metric) => (
-                          <div key={metric.label} className="status-cell">
-                            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-muted)]">
-                              {metric.label}
-                            </p>
-                            <p className="mt-2 font-display text-lg uppercase tracking-[0.12em] text-white">
-                              {metric.value}
-                            </p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </summary>
-
-                  <div className="border-t border-white/8 bg-[rgba(4,6,9,0.44)] px-6 pb-6 pt-2 lg:px-8 lg:pb-8">
-                    <div className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
-                      <div className="space-y-6">
-                        <div className="grid gap-5 sm:grid-cols-2">
-                          <div className="hud-frame">
-                            <span className="hud-label">Problem</span>
-                            <p className="mt-4 text-sm leading-7 text-[#d4dde8]">
-                              {project.problem}
-                            </p>
-                          </div>
-                          <div className="hud-frame">
-                            <span className="hud-label">My Role</span>
-                            <p className="mt-4 text-sm leading-7 text-[#d4dde8]">
-                              {project.role}
-                            </p>
-                          </div>
-                          <div className="hud-frame">
-                            <span className="hud-label">Stack</span>
-                            <div className="mt-4 flex flex-wrap gap-2">
-                              {project.stack.map((item) => (
-                                <span key={item} className="chip">
-                                  {item}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-                          <div className="hud-frame">
-                            <span className="hud-label">Challenge</span>
-                            <p className="mt-4 text-sm leading-7 text-[#d4dde8]">
-                              {project.challenge}
-                            </p>
-                          </div>
-                        </div>
-
-                        <div className="hud-frame">
-                          <span className="hud-label">Outcome</span>
-                          <p className="mt-4 text-sm leading-7 text-[#d4dde8]">
-                            {project.outcome}
-                          </p>
-                        </div>
-
-                        {repositoryLinks.length > 0 ? (
-                          <div className="grid gap-3 sm:max-w-xs">
-                            {repositoryLinks.map((link) =>
-                              <a
-                                key={link.label}
-                                href={link.href}
-                                target="_blank"
-                                rel="noreferrer"
-                                aria-label={`${link.label} for ${project.title}`}
-                                className="hud-button hud-button-secondary w-full"
-                              >
-                                {link.label}
-                              </a>
-                            )}
-                          </div>
-                        ) : null}
-                      </div>
-
-                      <div className="space-y-6">
-                        <div className="project-preview-panel min-h-[320px]">
-                          <div className="project-preview-backdrop" />
-                          <div className="project-preview-grid" />
-                          <div className="project-preview-content">
-                            <div className="flex items-start justify-between gap-4">
-                              <div>
-                                <p className="font-mono text-xs uppercase tracking-[0.22em] text-[var(--color-muted)]">
-                                  {project.preview.eyebrow}
-                                </p>
-                                <p className="mt-3 font-display text-2xl uppercase tracking-[0.14em] text-white">
-                                  {project.preview.title}
-                                </p>
-                              </div>
-                              <div
-                                className="h-4 w-20 shadow-[0_0_24px_var(--project-accent)] [clip-path:polygon(0_0,100%_0,100%_50%,82%_100%,0_100%)]"
-                                style={{ backgroundColor: project.accent }}
-                              />
-                            </div>
-
-                            <div className="space-y-3">
-                              {project.visualTags.map((item) => (
-                                <div
-                                  key={item}
-                                  className="status-cell font-mono text-xs uppercase tracking-[0.22em] text-[#e4eaf1]"
-                                >
-                                  {item}
-                                </div>
-                              ))}
-                            </div>
-
-                            <div className="hud-frame">
-                              <span className="hud-label">Preview Notes</span>
-                              <p className="mt-4 text-sm leading-7 text-[#d4dde8]">
-                                {project.preview.description}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+          return (
+            <article
+              key={project.id}
+              id={project.id}
+              className="scroll-mt-28 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6 sm:p-8"
+            >
+              <div className="flex flex-col gap-8 lg:grid lg:grid-cols-[minmax(0,1fr)_15rem]">
+                <div>
+                  <div className="flex flex-wrap items-center gap-3 text-sm">
+                    <span className="font-medium text-[var(--accent)]">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-[var(--muted)]">{project.status}</span>
                   </div>
-                </details>
-              );
-            })}
-          </div>
-        </div>
+                  <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[var(--text)]">
+                    {project.title}
+                  </h2>
+                  <p className="mt-3 max-w-3xl text-base leading-7 text-[var(--muted)]">
+                    {project.summary}
+                  </p>
+                </div>
+
+                {project.metrics ? (
+                  <dl className="grid grid-cols-3 gap-4 border-t border-[var(--border)] pt-6 lg:grid-cols-1 lg:border-l lg:border-t-0 lg:pl-6 lg:pt-0">
+                    {project.metrics.map((metric) => (
+                      <div key={metric.label}>
+                        <dt className="text-xs font-medium uppercase tracking-wider text-[var(--muted)]">
+                          {metric.label}
+                        </dt>
+                        <dd className="mt-1 text-sm text-[var(--text)]">
+                          {metric.value}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                ) : null}
+              </div>
+
+              <dl className="mt-8 grid gap-px overflow-hidden rounded-md border border-[var(--border)] bg-[var(--border)] md:grid-cols-2">
+                {[
+                  ["Problem", project.problem],
+                  ["My contribution", project.role],
+                  ["Core challenge", project.challenge],
+                  ["Outcome", project.outcome],
+                ].map(([label, value]) => (
+                  <div key={label} className="bg-[var(--surface-raised)] p-5">
+                    <dt className="text-xs font-medium uppercase tracking-wider text-[var(--muted)]">
+                      {label}
+                    </dt>
+                    <dd className="mt-3 text-sm leading-7 text-[var(--text)]">
+                      {value}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+
+              <div className="mt-7 flex flex-col gap-6 border-t border-[var(--border)] pt-6 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <p className="text-xs font-medium uppercase tracking-wider text-[var(--muted)]">
+                    Stack
+                  </p>
+                  <ul className="mt-3 flex flex-wrap gap-2" aria-label={`${project.title} technology stack`}>
+                    {project.stack.map((item) => (
+                      <li
+                        key={item}
+                        className="rounded-md border border-[var(--border)] bg-[var(--background)] px-3 py-1.5 text-xs text-[var(--muted)]"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="flex shrink-0 flex-wrap gap-3">
+                  {visibleLinks.map((link) =>
+                    link.href ? (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        target={link.external ? "_blank" : undefined}
+                        rel={link.external ? "noreferrer" : undefined}
+                        className="rounded-md border border-[var(--border)] px-4 py-2 text-sm font-medium text-[var(--text)] hover:border-[#48505c]"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <span
+                        key={link.label}
+                        className="self-center text-xs leading-5 text-[var(--muted)] sm:max-w-48 sm:text-right"
+                      >
+                        {link.status}
+                      </span>
+                    ),
+                  )}
+                </div>
+              </div>
+            </article>
+          );
+        })}
       </div>
     </section>
   );
