@@ -11,7 +11,7 @@ export function ProjectsDirectory({ projects }: ProjectsDirectoryProps) {
       <SectionHeading
         eyebrow="Projects"
         title="Selected work, from problem to delivery."
-        description="Seven projects across full-stack products, backend systems, applied AI, automation, and user-facing software."
+        description={`${projects.length} projects across full-stack products, backend systems, applied AI, automation, and user-facing software.`}
       />
 
       <div className="mt-12 space-y-6">

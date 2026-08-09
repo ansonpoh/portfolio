@@ -114,6 +114,95 @@ export const aboutCards: AboutCard[] = [
 
 export const featuredProjects: FeaturedProject[] = [
   {
+    id: "local-telegram-personal-assistant",
+    title: "Local Telegram Personal Assistant",
+    tagline:
+      "Private, locally inferred AI assistant that turns Telegram text and voice into safe, durable actions across tasks, Gmail, and Calendar.",
+    status: "Local agentic system",
+    summary:
+      "Single-user agentic system powered by a configurable GGUF model through llama.cpp, with local Whisper transcription, deterministic tool routing, durable execution, and guarded Gmail and Calendar integrations.",
+    problem:
+      "Cloud assistants expose sensitive context to hosted inference and make model-directed writes risky, while useful personal workflows remain fragmented across tasks, reminders, email, and calendars.",
+    role:
+      "Architected and implemented the layered Python runtime across Telegram transport, local inference, speech processing, SQLite persistence, tool planning, Google OAuth integrations, and safety-focused automated tests.",
+    challenge:
+      "Ensuring model output and untrusted Google content could never bypass authorization, schema validation, or confirmation policy while making multi-step writes idempotent across duplicate callbacks, restarts, and ambiguous API outcomes.",
+    outcome:
+      "Built a restart-safe assistant that resumes durable plans without duplicating proven writes, stops uncertain external actions for reconciliation, supports recurring reminders and voice input, and keeps prompts, secrets, and Google content out of logs.",
+    stack: [
+      "Python",
+      "llama.cpp",
+      "GGUF",
+      "SQLite",
+      "Telegram Bot API",
+      "Faster Whisper",
+      "Gmail API",
+      "Google Calendar API",
+      "Pytest",
+    ],
+    metrics: [
+      { label: "Inference", value: "Local GGUF model" },
+      { label: "Execution", value: "Restart-safe writes" },
+      { label: "Safety", value: "Replay-protected" },
+    ],
+    links: [
+      {
+        label: "Live Demo",
+        status: "No public deployment for this private, local-first assistant.",
+      },
+      {
+        label: "GitHub Repo",
+        href: "https://github.com/ansonpoh/assistant",
+        external: true,
+      },
+    ],
+  },
+  {
+    id: "rag-notes",
+    title: "RAG Notes",
+    tagline:
+      "Source-grounded study platform that transforms PDFs into cited, editable flashcards through production-grade RAG.",
+    status: "AI learning platform",
+    summary:
+      "Full-stack learning platform that validates and processes PDFs, plans retrieval topics, combines vector and lexical search, and generates editable flashcards with document- and page-level evidence.",
+    problem:
+      "Students can generate study material quickly with AI, but unsupported answers, missing source traceability, fragile background processing, and uncontrolled usage make many learning tools difficult to trust or operate reliably.",
+    role:
+      "Designed and built the Next.js product, FastAPI API and worker, Supabase data layer, hybrid retrieval pipeline, source-provenance model, operational controls, and backend test suite.",
+    challenge:
+      "Preserving user ownership and chunk-level provenance across asynchronous processing while preventing stale workers, malformed PDFs, concurrent requests, or unbounded model spend from compromising data integrity or reliability.",
+    outcome:
+      "Delivered an end-to-end PDF-to-study workflow with lease-fenced durable jobs, retry recovery, cited generation, RLS-backed isolation, per-user quotas and AI-cost ceilings, structured telemetry, and safe failure reporting.",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Python",
+      "FastAPI",
+      "Supabase",
+      "PostgreSQL",
+      "pgvector",
+      "OpenAI API",
+      "OpenTelemetry",
+      "Pytest",
+    ],
+    metrics: [
+      { label: "Retrieval", value: "Topic-planned hybrid" },
+      { label: "Jobs", value: "Lease-fenced" },
+      { label: "Evidence", value: "Chunk-level citations" },
+    ],
+    links: [
+      {
+        label: "Live Demo",
+        status: "No verified public deployment linked yet.",
+      },
+      {
+        label: "GitHub Repo",
+        href: "https://github.com/ansonpoh/rag_notes",
+        external: true,
+      },
+    ],
+  },
+  {
     id: "ai-safety-hivemind",
     title: "AI Safety Hivemind",
     tagline:
@@ -218,50 +307,6 @@ export const featuredProjects: FeaturedProject[] = [
     ],
   },
   {
-    id: "rag-service",
-    title: "RAG Service",
-    tagline:
-      "Production-style Retrieval-Augmented Generation backend with multi-tenant auth and streaming responses.",
-    status: "RAG backend service",
-    summary:
-      "Production-style FastAPI RAG backend with tenant-scoped JWT auth, async ingestion, hybrid retrieval, Postgres plus pgvector persistence, and SSE streaming chat.",
-    problem:
-      "LLM applications often fail in production when retrieval quality, tenant isolation, and response latency are not handled as first-class backend concerns.",
-    role:
-      "Designed and built a FastAPI-based RAG service with JWT tenant scoping, async ingestion pipelines, and retrieval/chat APIs backed by PostgreSQL + pgvector.",
-    challenge:
-      "Balancing hybrid retrieval relevance, secure multi-tenant data isolation, and real-time streaming UX while keeping ingestion, indexing, and observability production-ready.",
-    outcome:
-      "Delivered an end-to-end backend architecture with hybrid vector/keyword search, SSE chat streaming, metrics instrumentation, and a Next.js test client for validation.",
-    stack: [
-      "Python",
-      "FastAPI",
-      "OpenAI API",
-      "PostgreSQL",
-      "pgvector",
-      "Docker",
-      "Pytest",
-      "Next.js",
-      "TypeScript",
-    ],
-    metrics: [
-      { label: "Auth", value: "Multi-tenant JWT" },
-      { label: "Retrieval", value: "Hybrid search" },
-      { label: "Streaming", value: "SSE chat" },
-    ],
-    links: [
-      {
-        label: "Live Demo",
-        status: "No verified public deployment linked yet.",
-      },
-      {
-        label: "GitHub Repo",
-        href: "https://github.com/ansonpoh/RAG",
-        external: true,
-      },
-    ],
-  },
-  {
     id: "focus-tracker-agent",
     title: "Focus Tracker Agent",
     tagline:
@@ -298,52 +343,6 @@ export const featuredProjects: FeaturedProject[] = [
       {
         label: "GitHub Repo",
         href: "https://github.com/ansonpoh/Focus_Tracker_Agent",
-        external: true,
-      },
-    ],
-  },
-  {
-    id: "gmail-agent-assistant",
-    title: "Gmail Agent Assistant",
-    tagline:
-      "Telegram-operated Gmail workflow assistant for triage, digests, follow-up tracking, and safe draft generation.",
-    status: "Workflow assistant",
-    summary:
-      "Backend-first Gmail assistant that runs through Telegram, syncs and analyzes emails, generates digests and draft replies, tracks follow-ups, and enforces a strict manual-send workflow.",
-    problem:
-      "Inbox management becomes slow and fragmented when important emails, follow-up tasks, and reply drafting all happen across separate tools without a structured review loop.",
-    role:
-      "Built the backend orchestration across FastAPI services, Gmail and Telegram integrations, background job processing, and AI-assisted analysis flows with explicit approval boundaries.",
-    challenge:
-      "Coordinating OAuth, Gmail read and draft workflows, async digest generation, follow-up tracking, and Telegram-based operations while maintaining clear safety constraints and no automatic email sending.",
-    outcome:
-      "Delivered a practical communication workflow assistant that improves inbox triage and reply preparation without removing the user from the final approval and send decision.",
-    stack: [
-      "Python",
-      "FastAPI",
-      "PostgreSQL",
-      "SQLAlchemy",
-      "Alembic",
-      "Redis",
-      "Celery",
-      "Telegram Bot API",
-      "Gmail API",
-      "OpenAI API",
-      "Docker",
-    ],
-    metrics: [
-      { label: "Interface", value: "Telegram-first" },
-      { label: "Email Access", value: "Read + draft only" },
-      { label: "Jobs", value: "Async processing" },
-    ],
-    links: [
-      {
-        label: "Live Demo",
-        status: "No verified public deployment linked yet.",
-      },
-      {
-        label: "GitHub Repo",
-        href: "https://github.com/ansonpoh/email_agent",
         external: true,
       },
     ],
